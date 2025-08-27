@@ -148,21 +148,32 @@ nba-api-msrvc/
 
 ## Future Improvements
 
-This service was designed to be simple and created within a few hours, however, but there are several next steps to improve the app:
+This service was intentionally kept simple and built quickly for demonstration purposes. In a production setting, several enhancements would strengthen functionality, resilience, and maintainability:
 
-- **Richer caching**: persist not just games, but also aggregate stats (e.g. `team_aggregates` table) for faster repeat queries. 
-- **CI/CD integration**: GitHub / Bitbucket / Stash with build checks, plug in linter, tests; Integrate with Jenkins for release environments.
-- **Observability & Ops**:  
-  - Container logs could be aggregated into a centralised system (e.g. Prometheus + Grafana) to monitor errors and performance trends.  
-  - A log scraper could forward logs to aggregator Elasticsearch, making it easy to grep for errors and analyse API usage.
-- **Security & scaling**:  
-  - Kubernetes integration to run multiple containers with load balancing and resilience out of the box.
-  - Rate limiting on endpoints to prevent abuse (would be useful on paid subscription).
-  - Appropriate credential, secrets and key management software (Secrets Manager (AWS, GCP), Vault (Hashicorp)).
-- **Alternative DB choice**:
-  - Limited concurrency with Duck DB locally causing access contention.
-  - Need a scalable production choice like Big Query in GCP
-- **Better API response hygiene**:
-  - Custom errors on empty payloads
+- **Smarter caching**  
+  - Persist not only game data but also computed aggregates (e.g. `team_aggregates` table) to accelerate repeat queries.  
+
+- **CI/CD integration**  
+  - Add GitHub Actions (or Bitbucket/Stash pipelines) with linting, tests, and build checks.  
+  - Integrate with Jenkins (or similar) for automated promotion to staging and production.  
+
+- **Observability & Operations**  
+  - Centralise container logs in a system such as Prometheus + Grafana to track errors and performance trends.  
+  - Forward logs to Elasticsearch (or Splunk) for easier searching, alerting, and usage analysis.  
+
+- **Security & Scaling**  
+  - Deploy with Kubernetes for load balancing, horizontal scaling, and higher resilience.  
+  - Add endpoint rate limiting to prevent abuse (particularly relevant for paid APIs).  
+  - Manage credentials and secrets via dedicated services (e.g. AWS Secrets Manager, GCP Secret Manager, HashiCorp Vault).  
+
+- **Database considerations**  
+  - DuckDB works well for local prototyping but has concurrency limits.  
+  - A production deployment would likely migrate to a cloud warehouse (e.g. BigQuery, Redshift) for scalability.  
+
+- **Resilient API behaviour**  
+  - Return clear, structured error messages (e.g. when external API returns empty results).  
+  - Perform startup validation (e.g. fail fast if `BALLDONTLIE_API_KEY` is missing).  
+  - Introduce custom exception classes to improve debugging and developer experience.  
+
 
 ---
