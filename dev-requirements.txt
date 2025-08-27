@@ -1,0 +1,24 @@
+# Dev-only libs for local IDE testing
+# Your mileage may vary!
+
+# Core runtime deps
+flask>=3.0,<4
+duckdb>=1.1
+httpx>=0.27
+tenacity>=8.2
+
+
+# Linting / formatting / typing
+black>=24.0
+flake8>=7.0
+mypy>=1.8
+pylint>=3.0
+pyright>=1.1.380
+
+# Testing
+pytest>=8.0
+requests-mock>=1.12
+
+# Jupyter / pandas (optional, for local data poking)
+jupyterlab>=4.0
+pandas>=2.0

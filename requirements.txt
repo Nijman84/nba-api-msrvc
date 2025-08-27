@@ -1,0 +1,15 @@
+# jupyter
+pandas==2.3.2
+
+# main
+flask==3.0.3
+gunicorn==21.2.0
+duckdb==1.1.2
+httpx==0.27.0
+tenacity==8.3.0
+structlog==24.1.0
+python-json-logger==2.0.7
+
+# dev / tests
+pytest==8.3.2
+requests-mock==1.12.1
