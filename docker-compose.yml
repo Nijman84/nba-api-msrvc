@@ -3,6 +3,6 @@ services:
     build: .
     ports: ["8000:8000"]
     environment:
-      RAPIDAPI_KEY: ${RAPIDAPI_KEY}
+      - BALLDONTLIE_API_KEY=${BALLDONTLIE_API_KEY:?Missing API key. Set this in your environment}
     volumes:
       - ./data:/app/data
