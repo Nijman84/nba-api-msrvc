@@ -177,3 +177,6 @@ This service was intentionally kept simple and built quickly for demonstration p
 
 
 ---
+## License
+Code: Apache License 2.0 — see [LICENSE](./LICENSE).  
+Attribution: see [NOTICE](./NOTICE).
